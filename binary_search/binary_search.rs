@@ -19,11 +19,11 @@ fn binary_search(A: &[i32], x: i32) -> Option<usize> {
 
 fn binary_search_iter(a: &[i32], mut start: usize, mut end: usize, x: i32) -> Option<usize> {
     // out of bound ?
-    if start >= end {
+    if start > end {
         return None;
     }
 
-    let mid = (start+end)/2;
+    let mid = start + (end-start)/2;
 
     if a[mid] == x {
         return Some(mid);
