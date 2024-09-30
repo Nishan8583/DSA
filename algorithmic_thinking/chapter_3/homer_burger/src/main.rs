@@ -3,6 +3,12 @@ We assume that the fulle time can be consumed by eating burger m, and so we keep
 Same for n
 In final if both are -1, we could not solve them, so we keep on trying for t-1, t-2, until we find a time where homer can spend all the time eating burgers,
 rest of time we eat beer.
+
+OR I can think of it as a decision tree
+We canculate for a time when we eat burger "m" and when eat "n", and check substract the time on each call with t-m and t-n respectively.
+And then we decide which condition gives us non negative value, Memoize ti
+
+For DP solution, we start with at each time, from 0, how many burgers can it eat, either m or n, whichever is non zero
 */
 
 use std::{
@@ -22,7 +28,8 @@ fn main() {
             .filter_map(|s| s.parse::<i32>().ok());
 
         if let (Some(m), Some(n), Some(t)) = (values.next(), values.next(), values.next()) {
-            let v = solve(m, n, t);
+            //let v = solve(m, n, t);
+            solve_dp(m, n, t);
         } else {
             break;
         }
@@ -89,6 +96,63 @@ fn solve(m: i32, n: i32, t: i32) -> i32 {
 
     return -1;
 }
+fn solve_dp(m: i32, n: i32, t: i32) {
+    // for explaination lets assume, m = 4, n =9, and t = 15
+    let mut dp = [-1; 10000];
+
+    dp[0] = 0; // in time t = 0, there is exactly 0 burgers left because we can not eat anything
+    for i in 1..t + 1 {
+        let mut first = -1;
+        if i >= m {
+            // till 1-3, the values will be -1
+            // |    0   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |   8   |
+            // for i = 4, i-m=4-4=0,dp[0],0
+            // |    0   |   -1  |   -1  |   -1  |
+            // for m = 8
+            // |    0   |   -1  |   -1  |   -1  |
+            //println!("Calculate for i={} m={}", i, m);
+            first = dp[(i - m) as usize]; // when i = 4, its going to be 4-4, dp[0] is 0
+        }
+
+        let mut second = -1;
+        if i >= n {
+            //println!("Calculate for i={} n={} difference {}", i, n, i - n);
+            second = dp[(i - n) as usize];
+        }
+
+        if first == -1 && second == -1 {
+            dp[i as usize] = -1;
+            println!("Setting index {} as {}", i, -1);
+        } else {
+            dp[i as usize] = max(first, second) + 1; // here is where we add this
+            println!("Non -1 for {} {}", i as usize, max(first, second) + 1);
+        }
+    }
+
+    if dp[t as usize] >= 0 {
+        println!("{}", dp[t as usize]);
+    }
+
+    let mut result = dp[t as usize];
+    if result >= 0 {
+        println!("{}", result);
+    } else {
+        let mut i = t - 1;
+        result = dp[i as usize];
+        while (result == -1) {
+            i -= 1;
+            println!("Checking for {}", i);
+            if i < 0 {
+                println!("No solution found, index {}", i);
+                break;
+            }
+            result = dp[i as usize];
+            println!("value {}", result);
+        }
+        println!("{} {}", result, t - i);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
