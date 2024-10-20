@@ -62,6 +62,8 @@ fn main() {
 
         while count > 0 {
             let test_line = reader.next().unwrap().ok().unwrap();
+            let mut tests = test_line.split_whitespace();
+
             let mut test_values = test_line
                 .split_whitespace()
                 .filter_map(|x| x.parse::<f32>().ok());
@@ -73,9 +75,19 @@ fn main() {
             schemes_apple_cost.push(scheme_price);
             count -= 1;
         }
+
+        let apple_to_buy = reader.next().unwrap().ok().unwrap().parse::<i32>().ok();
         println!(
             "Unit Price={} Test cases={} Schemes_apples={:?} Schemes_price={:?}",
             unit_price, test_cases, schemes_apple_count, schemes_apple_cost
+        );
+
+        solve(
+            schemes_apple_count,
+            schemes_apple_cost,
+            test_cases,
+            unit_price,
+            apple_to_buy,
         );
 
         println!("Enter apple booiz");
