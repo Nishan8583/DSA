@@ -90,10 +90,14 @@ func find_time(adj_list [MAX_CELLS + 1]*edge, num_cells, from_cell, exit_cell in
 		min_time = -1
 		found = false
 
+		// Now loop through all the cells to find nodes that are not done, and has some distance value gte 0
 		for j := 1; j <= num_cells; j++ {
 			// The cell has to be not done and its min_times has to be atleast greater than or equals to 0
-			if !done[j] && min_times[j] >= 0 {
-				// if min_time has not be set yet or we found some new time which is less than  previous min time
+			if !done[j] && min_times[j] >= 0 { // if not done, then it means we need to calculate the min time for again
+
+				// if min_time is not calculate yet, or the currrent min_time is greater than new found min time
+				// Basically find the most minimum value among the cells that are not done
+				// set found to true, so that we know that we found something to do, either not done, or new value to add
 				if min_time == -1 || min_times[j] < min_time {
 					min_time = min_times[j]
 					min_time_index = j
@@ -106,6 +110,8 @@ func find_time(adj_list [MAX_CELLS + 1]*edge, num_cells, from_cell, exit_cell in
 		}
 		done[min_time_index] = true
 
+		// for the new index with the newly discovered min value, see if we find any path to a cell
+		// that costs less than what we had found before, if it is less, update it
 		e = adj_list[min_time_index]
 		for e != nil {
 			old_time = min_times[e.to_cell]
