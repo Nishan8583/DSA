@@ -181,3 +181,6 @@ total := 0
 - Use it if it is easiert to test feasibility than to find optimimal solution
 - I see in books, places where any solution might work,there are multiple numbers that might work, so we try each, then divide space between feasable and non feasible, this division must be possible to use binary search.
 - It does not have to be an array of increasing/decreasing values, just that after a certian operation half of it can be safely discarded, like in `cave dorrs` problem, we passed an array, with half switch turned on, if the door was open, it means the switch is within that range, if not, select another range and so on
+
+# Heap
+[Heap](./Heaps.md)
