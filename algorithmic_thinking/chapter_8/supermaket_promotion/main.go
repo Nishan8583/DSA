@@ -12,8 +12,6 @@ type heap_element struct {
 	cost          int
 }
 
-// heap is the heap array itself, we do not need a pointer becasue all of the memory will have already
-// been allocated and no new memory will be needed thus we will use index to update
 // num_heap is the counter that holds number of elelemtns in heap
 // rest 2 are problem specific values
 func max_heap_insert(heap *[MAX_RECEIPTS + 1]heap_element, num_heap *int, receipt_index, cost int) {
