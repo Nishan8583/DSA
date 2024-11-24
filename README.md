@@ -1,6 +1,5 @@
 ﻿# DSA
-
-
+ 
 # Memoization Dynamic programming
 1. Problem used in book is UVa 10465. Read the problem pdf first.
 2. Optimization problem, where we choose best solution out of all possible solution.
@@ -184,3 +183,6 @@ total := 0
 
 # Heap
 [Heap](./Heaps.md)
+
+# Segment Trees
+[SegmentTree](./segment_trees.md)

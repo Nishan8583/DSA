@@ -17,26 +17,26 @@
 ![max_heap1.png](./images/max_heap1.png)
 - We want to insert 32
 - We will inser to bottom most right
-![image.png](./image.png)
+![image.png](./images/image.png)
 - Heap is not sorted now
 - So we compare it with its parent, if it is greater than its parent, we swap
-![image2.png](./image2.png)
+![image2.png](./images/image2.png)
 - Now lets add 91, since bottom right is full, we add to left most
-![image3.png](./image3.png)
+![image3.png](./images/image3.png)
 - Uh oh not sorted, we compare with parent and keep on doing till no parent is greater than it
-![image4.png](./image4.png)
-![image5.png](./image5.png)
-![image6.png](./image6.png)
-![image7.png](./image7.png)
+![image4.png](./images/image4.png)
+![image5.png](./images/image5.png)
+![image6.png](./images/image6.png)
+![image7.png](./images/image7.png)
 
 ## Extracting from Max heap
 - We remove the root value from max heap
-![extract1.png](./extract1.png)
+![extract1.png](./images/extract1.png)
 - We remove from top and put bottom right most value on top
-![extact2.png](./extact2.png)
+![extact2.png](./images/extact2.png)
 
 - We check if swapped value is smaller than child, if so swap against the child with most large value
-![extract4.png](./extract4.png)
+![extract4.png](./images/extract4.png)
 - Keey on going till we reach bottom
 ![extract6.png](./extract6.png)
 ## Min heap

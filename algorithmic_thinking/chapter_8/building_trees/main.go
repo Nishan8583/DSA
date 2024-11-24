@@ -146,7 +146,7 @@ func main() {
 	segtree := [MAX_NODES*4 + 1]segtree_node{}
 	var num_nodes int
 
-	fmt.Scanf("%d ", &num_nodes)
+	fmt.Scanf("%d", &num_nodes)
 	for num_nodes > 0 {
 		for i := 0; i < num_nodes; i++ {
 			labelPr := ""
@@ -157,13 +157,14 @@ func main() {
 			if err != nil {
 				fmt.Println("Error while parsing terp", err)
 			}
+			fmt.Printf("Adding labe %s and integer %d\n", labe, pr)
 			treap_nodes[i].label = labe
 			treap_nodes[i].priority = pr
 			// treap_nodes[i].label
 		}
-
+		// continue
 		init_segtree(&segtree, 1, 0, num_nodes-1)
-		fill_segtree(&segtree, 0, &treap_nodes)
+		fill_segtree(&segtree, 1, &treap_nodes)
 		solve(&treap_nodes, 0, num_nodes-1, &segtree)
 		fmt.Printf("\n")
 		fmt.Scanf("%d", *&num_nodes)
