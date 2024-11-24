@@ -20,3 +20,6 @@ Example:
 - SO we check left, 0-3 is within, we get value from that, 4-7 is within, we got furhter in its child, 4-5, 5 ix the max range so we have to return that. so we get value from that
 - Now we compare which is greatest and we return that.
 - For code look at [here](./algorithmic_thinking/chapter_8/building_trees/main.go)
+
+## When to use them ?
+- When we want some max/min value within certain range.
