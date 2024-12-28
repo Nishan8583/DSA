@@ -58,13 +58,15 @@ total := 0
 ```
 - 0 time to get to itself and so its done
 - Now update the index with direct connection values.
+
 | Node       | Done       | min_index       |
 | -------------- | -------------- | -------------- |
-| 1 | done | 0 |
+| 1 | done  | 0 |
 | 2 | false | 12 |
 | 3 | false | 6 |
 | 4 | false | 45 |
 | 5 | false | 7 |
+
 
 ```go
 	for i := 0; i < num_cells; i++ {
@@ -87,6 +89,7 @@ total := 0
 ```
 - THe most minimum value here is `6` to get to node 3.
 - Since it is already the most min value, even if there is another path to it, it would be automatically be at least time `6`, so mark it as done.
+
 | Node       | Done       | min_index       |
 | -------------- | -------------- | -------------- |
 | 1 | done | 0 |
@@ -98,6 +101,7 @@ total := 0
 - Now we keep on repeating, check the most min time besides the `done` nodes.
 - Its node 5
 - Can we see if we can reach anything else from node 5, which might produce shorter value, yes, we can reach node 2, with total final value of 8
+
 | Node       | Done       | min_index       |
 | -------------- | -------------- | -------------- |
 | 1 | done | 0 |
